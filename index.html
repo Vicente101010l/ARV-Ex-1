@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Exercício 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="lib/aframe.min.js"></script>
+  <script src="scenes.js"></script>
+  <script src="tour.js" defer></script>
+</head>
+<body>
+  <a-scene id="scene" background="color: #05070d" loading-screen="dotsColor: #ffa24a; backgroundColor: #05070d">
+
+    <a-entity id="world" position="0 1.6 0">
+      <a-entity id="sky"
+                geometry="primitive: sphere; radius: 500; segmentsWidth: 64; segmentsHeight: 48"
+                material="shader: flat; side: back; color: #fff"
+                scale="-1 1 1" rotation="0 -90 0"></a-entity>
+
+      <a-circle id="cap" rotation="-90 0 0" position="0 -1.6 0" visible="false"
+                material="shader: flat; transparent: true; depthWrite: false; color: #fff"></a-circle>
+
+      <a-circle id="capTop" rotation="90 0 0" position="0 10 0" visible="false"
+                material="shader: flat; transparent: true; depthWrite: false; color: #fff"></a-circle>
+
+      <a-entity id="dyn"></a-entity>
+    </a-entity>
+
+    <a-entity id="cam" camera look-controls position="0 1.6 0"
+              cursor="rayOrigin: mouse"
+              raycaster="objects: .clickable; far: 30">
+      <a-entity id="fade"
+                geometry="primitive: sphere; radius: 0.5"
+                material="shader: flat; color: #000; side: back; transparent: true; opacity: 0; depthTest: false"
+                visible="false"></a-entity>
+    </a-entity>
+    <a-entity laser-controls="hand: left"  raycaster="objects: .clickable; far: 30"></a-entity>
+    <a-entity laser-controls="hand: right" raycaster="objects: .clickable; far: 30"></a-entity>
+  </a-scene>
+</body>
+</html>
